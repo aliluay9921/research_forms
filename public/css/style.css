@@ -1,0 +1,69 @@
+.loginPage {
+    display: flex;
+    direction: rtl;
+    justify-content: space-around;
+    margin: 10px;
+    min-height: 700px;
+}
+
+.loginPage .form {
+    margin-top: 100px;
+    margin-right: 50px;
+    width: 400px;
+    height: 300px;
+    padding: 20px;
+}
+
+.loginPage .form h2 {
+    text-align: center;
+    padding: 15px;
+    border-bottom: 1px solid rgba(2, 2, 2, .8);
+}
+
+label {
+    font-size: 16px;
+}
+
+.loginPage .form .btn {
+    margin-top: 36px;
+    margin-bottom: -38px;
+    outline: none;
+    transition: all .8s ease-in-out;
+    font-size: 20px;
+}
+
+.loginPage .form .btn a {
+    color: #fff;
+    outline: none;
+    text-decoration: none;
+    transition: all .8s ease-in-out;
+}
+
+.loginPage .form .btn:hover {
+    border-radius: 30px;
+    transition: all .4s ease-in-out;
+    border: 1px solid #000;
+}
+
+.loginPage .lotte {
+    margin-top: 100px;
+    width: 50%;
+    padding: 15px;
+}
+
+.loginPage .lotte img {
+    width: 100%;
+}
+
+.loginPage .form-group {
+    margin-top: 25px;
+}
+
+.form-control {
+    transition: all .8s ease-in-out;
+}
+
+.form-control:hover {
+    transition: all .4s ease-in-out;
+    border: 1px solid #000;
+}
