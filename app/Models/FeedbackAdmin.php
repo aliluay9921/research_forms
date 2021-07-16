@@ -17,10 +17,10 @@ class FeedbackAdmin extends Model
 
     public function users()
     {
-        return $this->hasMany(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
     public function researcherforms()
     {
-        return $this->hasMany(ResearcherForm::class, 'researcherforms_id');
+        return $this->belongsTo(ResearcherForm::class, 'researcherforms_id');
     }
 }

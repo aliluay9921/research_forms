@@ -20,4 +20,9 @@ class ResearcherForm extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function searchForms()
+    {
+        return $this->hasMany(FeedbackAdmin::class, 'researcherforms_id');
+    }
 }

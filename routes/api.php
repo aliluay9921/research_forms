@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,16 @@ route::middleware(['auth:api'])->group(function () {
 
     route::get('get_auth_search', [\App\Http\Controllers\SearchController::class, 'getSearchAuth']);
     route::get('get_all_searchs', [\App\Http\Controllers\SearchController::class, 'getAllSearch']);
+    route::get('get_feedback', [\App\Http\Controllers\SearchController::class, 'getFeedback']);
     route::post('feedback_admins', [\App\Http\Controllers\SearchController::class, 'feedbackAdmins']);
     route::post('upload_search', [\App\Http\Controllers\SearchController::class, 'uploadSearch']);
+
+
+    route::post('mail', function (Request $request) {
+        $details = [
+            'title' => $request['title'],
+            'body'  => $request['body'],
+        ];
+        Mail::to($request['user'])->send(new App\Mail\feedbackMail($details));
+    });
 });
