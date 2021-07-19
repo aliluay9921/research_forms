@@ -19,18 +19,14 @@ class SearchController extends Controller
 
 
 
-        $upload_path = public_path('file');
-        $file_name = $request->file->getClientOriginalName();
-        $generated_new_name = time() . '.' . $request->file->getClientOriginalExtension();
-        $request->file->move($upload_path, $generated_new_name);
 
-        // $request['upload_search'] = $this->uploadPicture($request['upload_search'], '/search/');
 
-        // $request['front_journal'] = $this->uploadPicture($request['front_journal'], '/ImagesProduct/');
-        // $request['approvment'] = 0;
-        // $request['user_id'] = auth()->user()->id;
+        $file = $request->file('file');
+        $filename = time() . '.' . $file->getClientOriginalExtension();
+        $request->file->move('file/', $filename);
+
         $upload = ResearcherForm::create([
-            'upload_search' => $file_name,
+            'upload_search' => $filename,
             'front_journal' => $this->uploadPicture($request->front_journal, '/ImagesProduct/'),
             'user_id' => auth()->user()->id,
             'search_title' => $request->search_title,
@@ -75,5 +71,9 @@ class SearchController extends Controller
         $feedback = FeedbackAdmin::with('users')->where('researcherforms_id', $_GET['researcherforms_id'])->get();
 
         return $this->send_response(200, 'get searchs form', null, $feedback);
+    }
+    public function download()
+    {
+        return response()->download('file/' . $_GET['code']);
     }
 }
