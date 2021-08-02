@@ -20,9 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('university');
             $table->string('collage');
-            $table->string('section');
-            $table->integer('scientific_title');
-            $table->integer('type_research');
+            $table->string('section')->nullable();
+            $table->integer('scientific_title')->nullable();
+            $table->integer('type_research')->nullable();
             $table->integer('status');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
