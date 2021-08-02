@@ -14,6 +14,7 @@ class UserController extends Controller
     {
         $request = $request->json()->all();
         $request['password'] = bcrypt($request['password']);
+        $request['status'] = 0;
         $user = User::create($request);
         $token = $user->createToken('ecommerce')->accessToken;
         return $this->send_response(200, 'user  created successfuly', null, $user, $token);
